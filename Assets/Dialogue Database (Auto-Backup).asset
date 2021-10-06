@@ -126,6 +126,20 @@ MonoBehaviour:
       value: 
       type: 0
       typeString: CustomFieldType_Text
+  - id: 3
+    fields:
+    - title: Name
+      value: playerName
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: MYPlayer
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
   conversations:
   - id: 1
     fields:
@@ -273,7 +287,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hello, and welcome to
+        value: Hello [var=playerName], how are you fine sankyou
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical

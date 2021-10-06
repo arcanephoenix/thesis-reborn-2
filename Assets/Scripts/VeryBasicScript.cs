@@ -8,5 +8,6 @@ public class VeryBasicScript : MonoBehaviour
     private void Start()
     {
         Debug.Log(DialogueLua.GetVariable("playerName").AsString);
+
     }
 }
