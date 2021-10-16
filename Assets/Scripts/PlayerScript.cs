@@ -17,7 +17,7 @@ public class PlayerScript : MonoBehaviour
     Vector3 gravity;
     CharacterController controller;
 
-    public Image fader;  
+    //public Image fader;  
 
 
     private static bool canPlayerMove = true;
@@ -25,12 +25,13 @@ public class PlayerScript : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         controller = GetComponent<CharacterController>();
-        StartCoroutine(MovementPause());
+        //StartCoroutine(MovementPause());
     }
     /*
      * stops movement at the start as part of intro
-     */
+     
     IEnumerator MovementPause()
     {
         fader.CrossFadeAlpha(0, 2, false);
@@ -38,7 +39,7 @@ public class PlayerScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         canPlayerMove = true;
     }
-
+    */
     private void Update()
     {
         if (AudioListener.volume < 1)

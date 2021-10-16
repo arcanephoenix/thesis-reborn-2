@@ -43,11 +43,12 @@ public class PlayerLook : MonoBehaviour
      */
     public static void SetMouseMover(bool canMouseMove)
     {
-        if(canMouseMove) // player can move
+        if(canMouseMove) // player can move, mouse is invisible
         {
             PlayerScript.TogglePlayerMovement(true);
             ToggleCamMovement(true);
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         else // player cannot move, mouse can move
         {
