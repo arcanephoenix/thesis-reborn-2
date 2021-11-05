@@ -802,9 +802,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9d5b8826049774c44bb4c07435ab2cbc, type: 2}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: dialogueTimeMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.dialogueUI
       value: 
       objectReference: {fileID: 1231251694}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.subtitleSettings.continueButton
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 11471062, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_prefabs.Array.data[0]
       value: 
@@ -1484,8 +1492,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 42.68
+  m_Intensity: 4.73
+  m_Range: 15.69
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2852,6 +2860,14 @@ PrefabInstance:
     - target: {fileID: 8605325155367216421, guid: fcb586d80945b3a4aa94dfe584611fb3, type: 3}
       propertyPath: m_LocalPosition.z
       value: -9.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607399875541539855, guid: fcb586d80945b3a4aa94dfe584611fb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607399875541539855, guid: fcb586d80945b3a4aa94dfe584611fb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.504
       objectReference: {fileID: 0}
     - target: {fileID: 8608658315154743887, guid: fcb586d80945b3a4aa94dfe584611fb3, type: 3}
       propertyPath: m_Layer
@@ -6379,7 +6395,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434429374}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6579,6 +6595,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameEntryForm: {fileID: 660998942}
+  allLightsParent: {fileID: 3911166579588947746}
+  lightColor: {r: 1, g: 0, b: 0, a: 1}
+  database: {fileID: 11400000, guid: 9d5b8826049774c44bb4c07435ab2cbc, type: 2}
 --- !u!1 &1526791208
 GameObject:
   m_ObjectHideFlags: 0
@@ -7030,7 +7049,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   distanceFrom: 0
-  maxSelectionDistance: 30
+  maxSelectionDistance: 10
   runRaycasts: 1
   raycastAll: 0
   useDefaultGUI: 1
@@ -7070,7 +7089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629436051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.93, y: 1.03, z: 11.7}
+  m_LocalPosition: {x: 1.18, y: 1, z: 12.454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -7105,7 +7124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d2e23caef41e047a3c3337b86193af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 5
   gMultiplier: 0.25
 --- !u!143 &1629436056
 CharacterController:
@@ -7235,7 +7254,7 @@ BoxCollider:
   m_GameObject: {fileID: 1629436051}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -7835,7 +7854,7 @@ GameObject:
   - component: {fileID: 1905890218}
   - component: {fileID: 1905890219}
   m_Layer: 0
-  m_Name: FirstAIConversation
+  m_Name: AIKA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,13 +12,13 @@ public class MainMenuScript : MonoBehaviour
     public TMP_Text titleCard;
     public GameObject nameEntryTextBox;
     private TMP_InputField nameEntryInput;
-    public string gameTitle = "factory reset";
-    private int i = 0;
+    //public string gameTitle = "factory reset";
+    //private int i = 0;
 
 
     private void Start()
     {
-        StartCoroutine(FirstStart());
+        //StartCoroutine(FirstStart());
         nameEntryInput = nameEntryTextBox.GetComponent<TMP_InputField>();
     }
 
@@ -29,7 +29,7 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene("Location");
     }
 
-    private IEnumerator FirstStart()
+    /*private IEnumerator FirstStart()
     {
         while (i < gameTitle.Length)
         {
@@ -44,11 +44,13 @@ public class MainMenuScript : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
     } 
+    */
 
     public void StartGame()
     {
-        mainMenuPanel.SetActive(false);
-        nameEntryPanel.SetActive(true);
+        SceneManager.LoadScene("NameEntry");
+        //mainMenuPanel.SetActive(false);
+        //nameEntryPanel.SetActive(true);
     }
     public void QuitGame()
     {

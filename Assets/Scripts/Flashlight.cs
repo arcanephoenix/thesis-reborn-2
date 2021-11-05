@@ -11,6 +11,7 @@ public class Flashlight : MonoBehaviour
 
     private void Start()
     {
+        flashlight.enabled = false;
         StartCoroutine(PowerManager());
     }
     void Update()
