@@ -34,6 +34,7 @@ namespace PixelCrushers.DialogueSystem
             public string asString { get { return hasReturnValue ? luaValue.ToString() : string.Empty; } }
             public bool asBool { get { return (hasReturnValue && (luaValue is Language.Lua.LuaBoolean)) ? (luaValue as Language.Lua.LuaBoolean).BoolValue : string.Compare(asString, "True", StringComparison.OrdinalIgnoreCase) == 0; } }
             public float asFloat { get { return hasReturnValue ? Tools.StringToFloat(luaValue.ToString()) : 0; } }
+
             public int asInt { get { return hasReturnValue ? Tools.StringToInt(luaValue.ToString()) : 0; } }
             public LuaTableWrapper asTable { get { if (luaTableWrapper == null) luaTableWrapper = new LuaTableWrapper(luaValue as Language.Lua.LuaTable); return luaTableWrapper; } }
 

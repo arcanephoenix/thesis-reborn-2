@@ -10,16 +10,48 @@ public class MyLuaFunctions : MonoBehaviour
     public Color lightColor;
     public DialogueDatabase database;
 
+    private string playerIPAString;
+    private string playerString;
+
+    private List<string> customDialogue;
+
     private void Start()
     {
+        customDialogue = new List<string>();
+        playerString = PlayerPrefs.GetString("playerName");
+        playerIPAString = PlayerPrefs.GetString("playerIPA");
+        string fakeName = DialogueLua.GetVariable("fakeName").asString;
+        DialogueLua.SetVariable("playerName", playerString);
         foreach (Conversation convo in database.conversations)
         {
-            Debug.Log(convo.id);
             foreach (DialogueEntry dialogueEntry in convo.dialogueEntries)
             {
-                Debug.Log(database.GetActor(dialogueEntry.ActorID).Name + dialogueEntry.currentDialogueText);
+                if (dialogueEntry.currentDialogueText.Contains("[var=playerName]"))
+                {
+                    //Debug.Log(dialogueEntry.id + " " + dialogueEntry.currentDialogueText);
+                    customDialogue.Add(dialogueEntry.currentDialogueText);
+                }
+                
             }
         }
+
+        for(int i=0;i<customDialogue.Count;i++)
+        {
+            customDialogue[i] = customDialogue[i].Replace("[var=[playerName]", playerString);
+
+        }
+
+
+    }
+
+    string ssmlGenerator(string text)
+    {
+        string ssmlMessage = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>" +
+            "<voice name = 'en-US-JacobNeural'>" +
+            text +
+            "</voice>" +
+            "</speak>";
+        return ssmlMessage;
     }
 
     private void OnEnable()

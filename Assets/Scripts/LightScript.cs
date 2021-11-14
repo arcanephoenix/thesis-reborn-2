@@ -11,12 +11,14 @@ public class LightScript : MonoBehaviour
     public float intensityMinimum = 0.85f;
     [Range(1f, 5f)]
     public float intensityMaximum = 1.2f;
+    private float currentIntensity;
     
     private Light thisLight;
 
     private void Start()
     {
         thisLight = GetComponent<Light>();
+        currentIntensity = thisLight.intensity;
         if(thisLight == null)
         {
             Debug.LogError("no light attached to this object " + gameObject.name);
@@ -31,9 +33,9 @@ public class LightScript : MonoBehaviour
             if(areLightsFlickering)
             {
                 float onTime = Random.Range(0.2f, 2.0f);
-                float lightIntensity = thisLight.intensity;
+                //float lightIntensity = currentIntensity;
                 thisLight.enabled = !thisLight.enabled;
-                if(!isIntensitySet) thisLight.intensity = Random.Range(intensityMinimum, intensityMaximum) * lightIntensity;
+                if(!isIntensitySet) thisLight.intensity = Random.Range(intensityMinimum, intensityMaximum) * currentIntensity;
                 yield return new WaitForSeconds(onTime);
             }
             yield return null;

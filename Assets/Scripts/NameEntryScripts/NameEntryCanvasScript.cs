@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using PixelCrushers.DialogueSystem;
+using Microsoft.CognitiveServices.Speech;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -20,10 +20,41 @@ public class NameEntryCanvasScript : MonoBehaviour
     //public GameObject[] vowelObjectSet, consonantObjectSet;
     bool isNameEntered = false; // if false, use introDialogue1, if true use introDialogue2
 
+    private SpeechConfig speechConfig;
+    private SpeechSynthesizer synthesizer;
+    public AudioSource audioPlayer;
+
     string[] consonants, vowels, condesc, vowdesc;
 
     public string[] introDialogue1;
     public string[] introDialogue2;
+
+    public void PlayAudio()
+    {
+        string newMessage = string.Empty;
+
+        var result = synthesizer.SpeakSsmlAsync(GenerateSSMLText(nameInput.text, nameIPA.text)).Result;
+
+        if (result.Reason == ResultReason.SynthesizingAudioCompleted)
+        {
+            var samplecount = result.AudioData.Length / 2;
+            var audiodata = new float[samplecount];
+            for (int i = 0; i < samplecount; i++)
+            {
+                audiodata[i] = (short)(result.AudioData[i * 2 + 1] << 8 | result.AudioData[i * 2]) / 32768.0f;
+            }
+            var audioclip = AudioClip.Create("SynthAudio", samplecount, 1, 24000, false);
+            audioclip.SetData(audiodata, 0);
+            audioPlayer.clip = audioclip;
+            audioPlayer.Play();
+        }
+        else if (result.Reason == ResultReason.Canceled)
+        {
+            var cancellation = SpeechSynthesisCancellationDetails.FromResult(result);
+            Debug.Log(cancellation.Reason + "  " + cancellation.ErrorDetails);
+        }
+
+    }
 
     private void Start()
     {
@@ -55,7 +86,29 @@ public class NameEntryCanvasScript : MonoBehaviour
 
             buttonSet.GetChild(1).GetComponent<TMP_Text>().text = condesc[i];
         }
-        
+
+
+        // audio subscription setup
+        string subscriptionKey = "f68d0b98d82f4ef1895f3f541548cd47";
+        string regionTTS = "centralindia";
+        speechConfig = SpeechConfig.FromSubscription(subscriptionKey, regionTTS);
+        speechConfig.SetProfanity(ProfanityOption.Raw);
+        speechConfig.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw24Khz16BitMonoPcm);
+        //speechConfig.SpeechSynthesisVoiceName = "en-US-AriaNeural";
+        synthesizer = new SpeechSynthesizer(speechConfig, null);
+
+    }
+
+    private string GenerateSSMLText(string name, string nameIPA)
+    {
+        string ssmlMessage = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>" +
+            "<voice name = 'en-US-AriaNeural'>" +
+            "<phoneme alphabet='ipa' ph='" + nameIPA +"'>" +
+            name +
+            "</phoneme>" +
+            "</voice>" +
+            "</speak>";
+        return ssmlMessage;
     }
 
     public void Erase()
