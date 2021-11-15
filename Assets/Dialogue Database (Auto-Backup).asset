@@ -454,7 +454,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai11)
         type: 0
         typeString: CustomFieldType_Text
       - title: Response Menu Sequence
@@ -677,7 +677,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai14)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -701,7 +701,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 614.50006
+        x: 613.55664
         y: 195.88309
         width: 160
         height: 30
@@ -748,7 +748,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: PlayAudio(Hello there)
+        value: AudioWait(AIDialogue/ai15)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -819,7 +819,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai16)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -891,7 +891,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai17)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -1033,7 +1033,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai19)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -1266,7 +1266,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai112)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -1349,7 +1349,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai113)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -1510,7 +1510,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai115)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -1832,7 +1832,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai119)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -1903,7 +1903,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: Lights()
+        value: 'Lights();
+
+          AudioWait(AIDialogue/ai120)'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -2031,7 +2033,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: I know Alex is a fake name. You didn't need to lie to me, MYPlayer.
+        value: I know Alex is a fake name. You didn't need to lie to me, [var=playerName].
         type: 0
         typeString: CustomFieldType_Text
       - title: Parenthetical
@@ -2190,7 +2192,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai125)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -2333,7 +2335,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai127)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -2691,7 +2693,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: AudioWait(AIDialogue/ai131)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -3864,8 +3866,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 332.6434, y: 1889.276}
-    canvasZoom: 1.0899999
+    canvasScrollPosition: {x: 0, y: 1000.5459}
+    canvasZoom: 0.6400004
   - id: 2
     fields:
     - title: Title
@@ -4028,7 +4030,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: AudioWait(robot1mp3)
+        value: AudioWait(robot1)
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 2
@@ -4052,7 +4054,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 210
+        x: 216.25002
         y: 70
         width: 160
         height: 30
@@ -4201,6 +4203,12 @@ MonoBehaviour:
         originDialogueID: 5
         destinationConversationID: 2
         destinationDialogueID: 8
+        isConnector: 0
+        priority: 2
+      - originConversationID: 2
+        originDialogueID: 5
+        destinationConversationID: 2
+        destinationDialogueID: 17
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -4973,7 +4981,13 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks: []
+      outgoingLinks:
+      - originConversationID: 2
+        originDialogueID: 16
+        destinationConversationID: 2
+        destinationDialogueID: 7
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: Variable["robotIntroCheck"] = true
       onExecute:
@@ -4981,13 +4995,78 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 226.86746
-        y: 650.72296
+        x: 281.86746
+        y: 639.47296
+        width: 160
+        height: 30
+    - id: 17
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 3
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Thank you.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 2
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 646.0756
+        y: 213.92435
         width: 160
         height: 30
     entryGroups: []
     canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.8299999
+    canvasZoom: 0.79999995
   - id: 3
     fields:
     - title: Title

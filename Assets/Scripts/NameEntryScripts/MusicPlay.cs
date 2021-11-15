@@ -13,6 +13,7 @@ public class MusicPlay : MonoBehaviour
 {
     private string subscriptionKey;
     private string regionTTS;
+    private List<string> audioStringList;
 
     public DialogueDatabase database;
 
@@ -51,8 +52,11 @@ public class MusicPlay : MonoBehaviour
         return ssmlMessage;
     }
 
+    
+
     private void Start()
     {
+        audioStringList = new List<string>();
         subscriptionKey = "f68d0b98d82f4ef1895f3f541548cd47";
         regionTTS = "centralindia";
         speechConfig = SpeechConfig.FromSubscription(subscriptionKey, regionTTS);
@@ -60,22 +64,26 @@ public class MusicPlay : MonoBehaviour
         //speechConfig.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw24Khz16BitMonoPcm);
         //foreach (Conversation convo in database.conversations)
         //{
-            foreach(DialogueEntry dialogueEntry in database.conversations[0].dialogueEntries)
+        foreach (DialogueEntry dialogueEntry in database.conversations[0].dialogueEntries)
+        {
+            string s = dialogueEntry.currentDialogueText;
+            if (s.Contains("[var="))
             {
-            if (dialogueEntry.currentDialogueText.Contains("[var="))
-            {
-                dialogueEntry.currentDialogueText = dialogueEntry.currentDialogueText.Replace("[var=fakeName]", DialogueLua.GetVariable("fakeName").asString);
-                dialogueEntry.currentDialogueText = dialogueEntry.currentDialogueText.Replace("[var=playerName]", DialogueLua.GetVariable("playerName").asString);
+                s = s.Replace("[var=fakeName]", DialogueLua.GetVariable("fakeName").asString);
+                s = s.Replace("[var=playerName]", DialogueLua.GetVariable("playerName").asString);
             }
+            audioStringList.Add(s);
+        }
+        foreach(string str in audioStringList)
+        {
             var audioConfig = AudioConfig.FromWavFileOutput("E:\\generatedFiles\\ai1" + i + ".wav");
             i++;
             //speechConfig.SpeechSynthesisVoiceName = "en-US-AriaNeural";
             synthesizer = new SpeechSynthesizer(speechConfig, audioConfig);
-            synthesizer.SpeakSsmlAsync(ssmlGenerator(dialogueEntry.currentDialogueText));
+            synthesizer.SpeakSsmlAsync(ssmlGenerator(str));
+        }
+            
             //Debug.Log(dialogueEntry.currentDialogueText);
-                    
-                                
-            }
         //}
         //var audioConfig = AudioConfig.FromWavFileOutput("E:\\hello.wav");
         //speechConfig.SpeechSynthesisVoiceName = "en-US-AriaNeural";

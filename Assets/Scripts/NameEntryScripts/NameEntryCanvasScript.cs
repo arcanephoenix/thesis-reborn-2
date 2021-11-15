@@ -16,6 +16,7 @@ public class NameEntryCanvasScript : MonoBehaviour
     public TMP_InputField nameInput;
     public TMP_Text nameIPA;
     public TMP_Text dialogText;
+    public TMP_Text finalButton;
     private int stringCounter = 0;
     //public GameObject[] vowelObjectSet, consonantObjectSet;
     bool isNameEntered = false; // if false, use introDialogue1, if true use introDialogue2
@@ -58,6 +59,10 @@ public class NameEntryCanvasScript : MonoBehaviour
 
     private void Start()
     {
+        dialogForm.SetActive(true);
+        nameEntryForm.SetActive(false);
+
+
         dialogText.text = introDialogue1[0];
         nameIPA.text = "";
         consonants = new string[] { "b", "d", "d͡ʒ", "ð", "f", "g", "h", "j", "k", "l", "m", "n", "ŋ", "p", "ɹ", "s", "ʃ", "t", "t͡ʃ", "θ", "v", "w", "z", "ʒ" };
@@ -148,10 +153,11 @@ public class NameEntryCanvasScript : MonoBehaviour
     {
         if(isNameEntered) //introDialogue2
         {
-            if(stringCounter < introDialogue2.Length)
+            if(stringCounter < introDialogue2.Length -1)
             {
-                dialogText.text = introDialogue2[stringCounter];
                 stringCounter++;
+                dialogText.text = introDialogue2[stringCounter];
+                if (stringCounter == introDialogue2.Length - 1) finalButton.text = "Acknowledge";
             }
             else
             {
@@ -161,10 +167,11 @@ public class NameEntryCanvasScript : MonoBehaviour
         }
         else //introdialogue1
         {
-            if(stringCounter < introDialogue1.Length)
+            if(stringCounter < introDialogue1.Length - 1)
             {
-                dialogText.text = introDialogue1[stringCounter];
                 stringCounter++;
+                dialogText.text = introDialogue1[stringCounter];
+                
             }
             else //introDialogue1 completed
             {
@@ -183,9 +190,11 @@ public class NameEntryCanvasScript : MonoBehaviour
         string playerIPA = nameIPA.text;
         PlayerPrefs.SetString("playerName", playerName);
         PlayerPrefs.SetString("playerIPA", playerIPA);
+        //Debug.Log($"{PlayerPrefs.GetString("playerName")} ipa is {PlayerPrefs.GetString("playerIPA")}");
         isNameEntered = true;
         dialogForm.SetActive(true);
         nameEntryForm.SetActive(false);
+        dialogText.text = introDialogue2[0];
     }
 
 }

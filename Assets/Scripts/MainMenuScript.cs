@@ -8,10 +8,9 @@ public class MainMenuScript : MonoBehaviour
 {
     public GameObject mainMenuPanel;
     public GameObject controlsPanel;
-    public GameObject nameEntryPanel;
-    public TMP_Text titleCard;
-    public GameObject nameEntryTextBox;
-    private TMP_InputField nameEntryInput;
+    //public TMP_Text titleCard;
+    //public GameObject nameEntryTextBox;
+    //private TMP_InputField nameEntryInput;
     //public string gameTitle = "factory reset";
     //private int i = 0;
 
@@ -19,14 +18,7 @@ public class MainMenuScript : MonoBehaviour
     private void Start()
     {
         //StartCoroutine(FirstStart());
-        nameEntryInput = nameEntryTextBox.GetComponent<TMP_InputField>();
-    }
-
-    public void NameEntry()
-    {
-        string playerName = nameEntryInput.text;
-        PlayerPrefs.SetString("playerName", playerName);
-        SceneManager.LoadScene("Location");
+        //nameEntryInput = nameEntryTextBox.GetComponent<TMP_InputField>();
     }
 
     /*private IEnumerator FirstStart()

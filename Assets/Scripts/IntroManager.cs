@@ -15,11 +15,12 @@ public class IntroManager : MonoBehaviour
     private bool isCamMoving = false;
     public Image fader;
     public GameObject playerObject;
-    public Light bigLight;
+    //public Light bigLight;
     public Image aimImage;
 
     private void Start()
     {
+        fader.enabled = true;
         fader.CrossFadeAlpha(0, 1, false);
         playerObject.SetActive(false);
         aimImage.enabled = false;
@@ -45,7 +46,7 @@ public class IntroManager : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        fader.CrossFadeAlpha(1, 2, false);
+        fader.CrossFadeAlpha(1, 1, false);
         yield return new WaitForSeconds(2);
         playerObject.SetActive(true);
         aimImage.enabled = true;

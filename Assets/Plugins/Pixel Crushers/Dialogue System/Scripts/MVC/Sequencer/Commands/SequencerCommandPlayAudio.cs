@@ -19,6 +19,11 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
         private AudioClip originalClip = null;
         private bool restoreOriginalClip = false; // Don't restore; could stop next entry's AudioWait that runs same frame.
 
+        void OnConversationStart(Subtitle subtitle)
+        {
+            Debug.Log(subtitle.dialogueEntry.currentDialogueText);
+        }
+
         public IEnumerator Start()
         {
             string subscriptionKey = "f68d0b98d82f4ef1895f3f541548cd47";

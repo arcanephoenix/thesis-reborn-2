@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     public float speed = 2.5f;
     private float g = -9.81f;
     public float gMultiplier = 0.25f;
+    public Image fader;
 
     Vector3 gravity;
     CharacterController controller;
@@ -27,19 +28,20 @@ public class PlayerScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         controller = GetComponent<CharacterController>();
-        //StartCoroutine(MovementPause());
+        fader.CrossFadeAlpha(0, 2, false);
+        StartCoroutine(MovementPause());
     }
     /*
      * stops movement at the start as part of intro
-     
+     */
     IEnumerator MovementPause()
     {
-        fader.CrossFadeAlpha(0, 2, false);
         canPlayerMove = false;
+        fader.CrossFadeAlpha(0, 1, false);
         yield return new WaitForSeconds(1);
         canPlayerMove = true;
     }
-    */
+    
     private void Update()
     {
         if (AudioListener.volume < 1)
