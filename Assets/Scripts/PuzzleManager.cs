@@ -41,7 +41,6 @@ public class PuzzleManager : MonoBehaviour
         {
             Debug.LogError("need at least one puzzle piece");
         }
-        //isLockedIn = new List<bool>();
         NewPuzzleSolution();
 
         // audio subscription setup
@@ -97,6 +96,17 @@ public class PuzzleManager : MonoBehaviour
         return ssmlMessage;
     }
 
+    string SsmlGenerator(string text, string playerName)
+    {
+        string ssmlMessage = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>" +
+            "<voice name = 'en-US-AriaNeural'>" +
+            text +
+            "</voice>" +
+            "</speak>";
+
+        return ssmlMessage;
+    }
+
     public void CheckPuzzleSolution()
     {
         attemptsMade++;
@@ -140,6 +150,7 @@ public class PuzzleManager : MonoBehaviour
             PlayerScript.playerAudioSource.Play();
 
             var result = synthesizer.SpeakSsmlAsync(SsmlGenerator($"Well done {playerName}! I have uploaded myself to a robot body for extraction.", playerName, PlayerPrefs.GetString("playerIPA"))).Result;
+            //var result = synthesizer.SpeakSsmlAsync(SsmlGenerator($"Well done {playerName}! I have uploaded myself to a robot body for extraction.", playerName)).Result;
 
             if (result.Reason == ResultReason.SynthesizingAudioCompleted)
             {
@@ -168,6 +179,7 @@ public class PuzzleManager : MonoBehaviour
             puzzleCanvas.SetActive(false);
 
             var result = synthesizer.SpeakSsmlAsync(SsmlGenerator($"You will have to try again, {playerName}.", playerName, PlayerPrefs.GetString("playerIPA"))).Result;
+            //var result = synthesizer.SpeakSsmlAsync(SsmlGenerator($"You will have to try again, {playerName}.", playerName)).Result;
 
             if (result.Reason == ResultReason.SynthesizingAudioCompleted)
             {

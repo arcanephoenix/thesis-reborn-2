@@ -742,7 +742,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: AudioWait(AIDialogue/ai15)
+        value: PlayAudio();
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -1069,8 +1069,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 624.74603
-        y: 445.06177
+        x: 611.34393
+        y: 448.15454
         width: 160
         height: 30
     - id: 10
@@ -1858,7 +1858,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 621.43646
-        y: 997.5719
+        y: 999.0005
         width: 160
         height: 30
     - id: 20
@@ -2004,8 +2004,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 624.3204
-        y: 1109.0538
+        x: 1004.3202
+        y: 1131.911
         width: 160
         height: 30
     - id: 24
@@ -2624,7 +2624,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: PlayAudio()
+        value: AudioWWW(
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -3059,7 +3059,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: PlayAudio
+        value: PlayAudio()
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -3203,7 +3203,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: AudioWait(AIDialogue/ai139)
+        value: PlayAudio()
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 1
@@ -4011,9 +4011,80 @@ MonoBehaviour:
         y: 2362.274
         width: 160
         height: 30
+    - id: 55
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Pictures
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: I know you are not who you say you are, Alex.
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Parenthetical
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Audio Files
+        value: '[]'
+        type: 3
+        typeString: CustomFieldType_Files
+      - title: Video File
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 1
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 1
+        originDialogueID: 55
+        destinationConversationID: 1
+        destinationDialogueID: 24
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 346.69092
+        y: 1121.6892
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 1131.2097}
-    canvasZoom: 0.6100005
+    canvasScrollPosition: {x: 117.07318, y: 2253.551}
+    canvasZoom: 0.8200001
   - id: 2
     fields:
     - title: Title
@@ -5446,7 +5517,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: PlayAudio
+        value: PlayAudio();
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 3
@@ -5588,7 +5659,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: PlayAudio();
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 3

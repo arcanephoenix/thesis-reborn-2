@@ -2810,7 +2810,6 @@ MonoBehaviour:
   - An artificial intelligence system has been installed at our facility in the New
     England Union.
   - Your assignment is to isolate the AI into your box and liquidate the facility.
-  - You will be given a fresh identity to access the facility, the code name is Alex.
   - On your acknowledgement, your payment will be sent by the usual channels.
   - Confirm acknowledgement.
   dialogText: {fileID: 724560149}

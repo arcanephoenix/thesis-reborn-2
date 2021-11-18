@@ -26,6 +26,7 @@ public class NameEntryControlScript : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetString("playerName", "Alex");
             // go to game scene, prepare
             SceneManager.LoadScene("SampleScene");
         }

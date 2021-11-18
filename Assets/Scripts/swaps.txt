@@ -1,0 +1,8 @@
+control to tts swaps
+
+MyLuaFunctions 
+SequencerCommandPlayAudio
+PuzzleManager
+Dialogue switch -> AIKA1
+
+NECanvas - NEControl

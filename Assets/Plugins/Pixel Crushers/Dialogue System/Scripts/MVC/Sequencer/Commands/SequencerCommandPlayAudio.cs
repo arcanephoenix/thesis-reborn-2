@@ -103,6 +103,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
                 else
                 {
                     string ssmlDialogueText = ssmlGenerator(dialogueText, playerName, ipaName);
+                    //string ssmlDialogueText = ssmlGenerator(dialogueText, playerName);
                     var result = synthesizer.SpeakSsmlAsync(ssmlDialogueText).Result;
 
                     if (result.Reason == ResultReason.SynthesizingAudioCompleted)

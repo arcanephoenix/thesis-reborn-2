@@ -23,9 +23,10 @@ public class MyLuaFunctions : MonoBehaviour
 
     private void Start()
     {
-        //customDialogue = new List<string>();
-        playerString = PlayerPrefs.GetString("playerName");
+        //PlayerPrefs.DeleteKey("playerName");
+        //PlayerPrefs.DeleteKey("playerIPA");
         //playerString = "Alex";
+        playerString = PlayerPrefs.GetString("playerName");
         playerIPAString = PlayerPrefs.GetString("playerIPA");
         string fakeName = DialogueLua.GetVariable("fakeName").asString;
         DialogueLua.SetVariable("playerName", playerString);
@@ -46,17 +47,17 @@ public class MyLuaFunctions : MonoBehaviour
         Lua.RegisterFunction("CanCompleteEndings", this, typeof(MyLuaFunctions).GetMethod("CanCompleteEndings"));
         Lua.RegisterFunction("TurnLightsOff", this, typeof(MyLuaFunctions).GetMethod("TurnLightsOff"));
         Lua.RegisterFunction("StopBlinking", this, typeof(MyLuaFunctions).GetMethod("StopBlinking"));
+        Lua.RegisterFunction("EndingSequence", this, typeof(MyLuaFunctions).GetMethod("EndingSequence"));
     }
     private void OnDisable()
     {
         Lua.UnregisterFunction("CanCompleteEndings");
         Lua.UnregisterFunction("TurnLightsOff");
         Lua.UnregisterFunction("StopBlinking");
+        Lua.UnregisterFunction("EndingSequence");
     }
     public void TurnLightsOff()
     {
-        
-        //Debug.Log("turning lights off boo");
         Light[] lightList = allLightsParent.GetComponentsInChildren<Light>();
         foreach(Light light in lightList)
         {
