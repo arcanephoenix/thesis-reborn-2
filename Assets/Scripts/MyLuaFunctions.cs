@@ -25,31 +25,10 @@ public class MyLuaFunctions : MonoBehaviour
     {
         //customDialogue = new List<string>();
         playerString = PlayerPrefs.GetString("playerName");
+        //playerString = "Alex";
         playerIPAString = PlayerPrefs.GetString("playerIPA");
-        //Debug.Log($"{playerString} ipa is {playerIPAString}");
         string fakeName = DialogueLua.GetVariable("fakeName").asString;
         DialogueLua.SetVariable("playerName", playerString);
-        /*
-        foreach (Conversation convo in database.conversations)
-        {
-            foreach (DialogueEntry dialogueEntry in convo.dialogueEntries)
-            {
-                if (dialogueEntry.currentDialogueText.Contains("[var=playerName]"))
-                {
-                    //Debug.Log(dialogueEntry.id + " " + dialogueEntry.currentDialogueText);
-                    customDialogue.Add(dialogueEntry.currentDialogueText);
-                }
-                
-            }
-        }
-
-        for(int i=0;i<customDialogue.Count;i++)
-        {
-            customDialogue[i] = customDialogue[i].Replace("[var=[playerName]", playerString);
-
-        }
-        */
-
     }
 
     string ssmlGenerator(string text)

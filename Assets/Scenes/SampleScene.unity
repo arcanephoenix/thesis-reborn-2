@@ -8704,8 +8704,8 @@ MonoBehaviour:
   allLightsParent: {fileID: 3911166579588947746}
   lightColor: {r: 1, g: 0, b: 0, a: 1}
   lightAIKAConsole: {fileID: 1905890219}
-  allRobots: {fileID: 0}
-  endingCanvas: {fileID: 0}
+  allRobots: {fileID: 1874959000}
+  endingCanvas: {fileID: 1291946959}
   exitDoor: {fileID: 1178679799}
 --- !u!114 &1517194454
 MonoBehaviour:

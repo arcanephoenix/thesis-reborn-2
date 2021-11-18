@@ -81,6 +81,16 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             return ssmlMessage;
         }
 
+        string ssmlGenerator(string text, string playerName)
+        {
+            string ssmlMessage = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>" +
+                "<voice name = 'en-US-AriaNeural'>" +
+                text +
+                "</voice>" +
+                "</speak>";
+            return ssmlMessage;
+        }
+
         private void TryAudioClip(string dialogueText)
         {
             try

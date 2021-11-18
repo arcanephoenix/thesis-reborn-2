@@ -1237,7 +1237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &337395418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2388,7 +2388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &740901222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2475,6 +2475,7 @@ GameObject:
   - component: {fileID: 742719884}
   - component: {fileID: 742719886}
   - component: {fileID: 742719885}
+  - component: {fileID: 742719887}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2790,6 +2791,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &742719887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742719879}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c72a608f265d3347be7a7a8a15630c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  introDialogue:
+  - Good day, Alex.
+  - "My client, a major organisation, requests your expertise in a matter they would
+    prefer to keep\u2026off their financial statements."
+  - An artificial intelligence system has been installed at our facility in the New
+    England Union.
+  - Your assignment is to isolate the AI into your box and liquidate the facility.
+  - You will be given a fresh identity to access the facility, the code name is Alex.
+  - On your acknowledgement, your payment will be sent by the usual channels.
+  - Confirm acknowledgement.
+  dialogText: {fileID: 724560149}
+  finalButton: {fileID: 616379272}
 --- !u!1001 &748761651
 PrefabInstance:
   m_ObjectHideFlags: 0
