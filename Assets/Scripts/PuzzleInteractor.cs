@@ -7,6 +7,9 @@ public class PuzzleInteractor : MonoBehaviour
     public Camera playerCam;
     private PuzzleManager puzzleStarter;
     public LayerMask layerItemSelect;
+    private Interactable exitDoor;
+
+    public static bool canInteract = false;
 
     public void AimAtThings()
     {
@@ -15,10 +18,15 @@ public class PuzzleInteractor : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hitinfo, 10f, layerItemSelect))
         {
             puzzleStarter = hitinfo.collider.GetComponent<PuzzleManager>();
+            exitDoor = hitinfo.collider.GetComponent<Interactable>();
 
-            if (puzzleStarter != null)
+            if (puzzleStarter != null && canInteract && !puzzleStarter.isSolved)
             {
                 puzzleStarter.charPopup.enabled = true;
+            }
+            else if(exitDoor != null && canInteract && exitDoor.canInteract)
+            {
+                exitDoor.popupText.enabled = true;
             }
         }
         else
@@ -27,6 +35,11 @@ public class PuzzleInteractor : MonoBehaviour
             {
                 puzzleStarter.charPopup.enabled = false;
                 puzzleStarter = null;
+            }
+            if(exitDoor != null)
+            {
+                exitDoor.popupText.enabled = false;
+                exitDoor = null;
             }
 
         }
@@ -42,10 +55,15 @@ public class PuzzleInteractor : MonoBehaviour
     {
         AimAtThings();
 
-        if(Input.GetKeyDown(KeyCode.E) && puzzleStarter != null && !puzzleStarter.isSolved)
+        if(Input.GetKeyDown(KeyCode.E) && puzzleStarter != null && !puzzleStarter.isSolved && canInteract)
         {
             PlayerLook.SetMouseMover(false);
             puzzleStarter.StartPuzzle();
+        }
+        if(Input.GetKeyDown(KeyCode.E) && exitDoor != null && exitDoor.canInteract && canInteract)
+        {
+            PlayerLook.SetMouseMover(false);
+            exitDoor.EndGameLeave();
         }
     }
 }

@@ -40,6 +40,7 @@ public class PlayerLook : MonoBehaviour
     /*
      * utility function
      * enables/disables mouse movement
+     * 
      */
     public static void SetMouseMover(bool canMouseMove)
     {

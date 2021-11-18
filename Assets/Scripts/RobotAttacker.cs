@@ -6,6 +6,7 @@ public class RobotAttacker : MonoBehaviour
 {
     public GameObject player;
     public CharacterController character;
+    public Animator anim;
     public Transform statusOrb;
     public Material materialDanger;
     public Material materialGood;
@@ -20,6 +21,7 @@ public class RobotAttacker : MonoBehaviour
     {
         statusOrb.GetComponent<MeshRenderer>().material = materialDanger;
         isHostile = true;
+        anim.SetBool("isWalking", true);
     }
 
     private void Update()

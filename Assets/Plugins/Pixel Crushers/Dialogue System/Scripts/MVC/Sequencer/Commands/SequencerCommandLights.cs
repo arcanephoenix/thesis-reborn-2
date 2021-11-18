@@ -10,7 +10,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
 
         public void Awake()
         {
-            Debug.Log("sequencer baby");
+            //Debug.Log("sequencer baby");
             GameObject lightParent = GameObject.Find("SceneLights");
             foreach (Light light in lightParent.GetComponentsInChildren<Light>())
             {

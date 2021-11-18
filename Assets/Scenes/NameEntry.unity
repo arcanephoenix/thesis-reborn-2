@@ -2595,7 +2595,7 @@ MonoBehaviour:
   - An artificial intelligence system has been installed at our facility in the New
     England Union.
   - Your assignment is to isolate the AI into your box and liquidate the facility.
-  - You will be given a fresh identity to access the facility, [fakeName].
+  - You will be given a fresh identity to access the facility, the code name is Alex.
   - On your acknowledgement, your payment will be sent by the usual channels.
   - Confirm acknowledgement.
 --- !u!82 &742719885
@@ -2610,7 +2610,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: deea8a73ff68dd349b7e9a42bcac00e6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.124
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4156,7 +4156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter your name...
+  m_text: Click here to enter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4715,7 +4715,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

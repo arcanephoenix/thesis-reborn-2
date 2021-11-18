@@ -32,7 +32,6 @@ public class NameEntryCanvasScript : MonoBehaviour
 
     public void PlayAudio()
     {
-        string newMessage = string.Empty;
 
         var result = synthesizer.SpeakSsmlAsync(GenerateSSMLText(nameInput.text, nameIPA.text)).Result;
 

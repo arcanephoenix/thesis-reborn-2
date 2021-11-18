@@ -94,7 +94,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64f49cba9af26db4f8f5318cb7228b49, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9bc6fd5714f1ac7438936c31eab48d74, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -240,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 517df641374c9964e9cc429aeb94b730, type: 2}
+  - {fileID: 2100000, guid: 56894a729bbba84408f962fb2fc5ed19, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 2539215562029372302}
   - component: {fileID: 2539215562029372305}
   m_Layer: 0
-  m_Name: f
+  m_Name: introCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +441,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -554,13 +554,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2539215563205144274}
+  - component: {fileID: 748531059}
   m_Layer: 0
   m_Name: SceneIntroManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2539215563205144274
 Transform:
   m_ObjectHideFlags: 0
@@ -578,3 +579,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &748531059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2539215563205144276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf23f1a7eef6764f8ece2b1e29e5169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 2539215562029372302}
+  camSpeed: 1.7
+  introTimer: 5
+  fader: {fileID: 0}
+  audioListenerPlayerCamera: {fileID: 0}
+  aimImage: {fileID: 0}

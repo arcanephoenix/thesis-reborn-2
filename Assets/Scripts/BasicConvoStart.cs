@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicConvoStart : MonoBehaviour
 {
     public Light myLight;
-    public bool isLightBlinking = true;
+    public static bool isLightBlinking = true;
     public Color[] colors;
     private int colorLength;
     private int currentColorIndex = 0;
@@ -28,8 +28,8 @@ public class BasicConvoStart : MonoBehaviour
         }
     }
 
-    public void TurnBlinkingOff()
-    {
-        isLightBlinking = false;
-    }
+    //public void TurnBlinkingOff()
+    //{
+        //isLightBlinking = false;
+    //}
 }

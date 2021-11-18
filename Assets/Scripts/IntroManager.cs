@@ -14,7 +14,7 @@ public class IntroManager : MonoBehaviour
     public float introTimer = 10;
     private bool isCamMoving = false;
     public Image fader;
-    public GameObject playerObject;
+    public AudioListener audioListenerPlayerCamera;
     //public Light bigLight;
     public Image aimImage;
 
@@ -22,7 +22,7 @@ public class IntroManager : MonoBehaviour
     {
         fader.enabled = true;
         fader.CrossFadeAlpha(0, 1, false);
-        playerObject.SetActive(false);
+        audioListenerPlayerCamera.enabled = false;
         aimImage.enabled = false;
         StartCoroutine(CameraIntro());
     }
@@ -48,7 +48,7 @@ public class IntroManager : MonoBehaviour
     {
         fader.CrossFadeAlpha(1, 1, false);
         yield return new WaitForSeconds(2);
-        playerObject.SetActive(true);
+        audioListenerPlayerCamera.enabled = true;
         aimImage.enabled = true;
         Destroy(gameObject);
     }

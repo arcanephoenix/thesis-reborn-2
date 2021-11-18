@@ -5,23 +5,31 @@ using PixelCrushers.DialogueSystem;
 
 public class MyLuaFunctions : MonoBehaviour
 {
-    public GameObject nameEntryForm;
     public GameObject allLightsParent;
     public Color lightColor;
-    public DialogueDatabase database;
+    //public DialogueDatabase database;
+
+    public BasicConvoStart lightAIKAConsole;
 
     private string playerIPAString;
     private string playerString;
 
-    private List<string> customDialogue;
+    public GameObject allRobots;
+    public GameObject endingCanvas;
+
+    public Interactable exitDoor;
+
+    //private List<string> customDialogue;
 
     private void Start()
     {
-        customDialogue = new List<string>();
+        //customDialogue = new List<string>();
         playerString = PlayerPrefs.GetString("playerName");
         playerIPAString = PlayerPrefs.GetString("playerIPA");
+        //Debug.Log($"{playerString} ipa is {playerIPAString}");
         string fakeName = DialogueLua.GetVariable("fakeName").asString;
         DialogueLua.SetVariable("playerName", playerString);
+        /*
         foreach (Conversation convo in database.conversations)
         {
             foreach (DialogueEntry dialogueEntry in convo.dialogueEntries)
@@ -40,7 +48,7 @@ public class MyLuaFunctions : MonoBehaviour
             customDialogue[i] = customDialogue[i].Replace("[var=[playerName]", playerString);
 
         }
-
+        */
 
     }
 
@@ -56,18 +64,15 @@ public class MyLuaFunctions : MonoBehaviour
 
     private void OnEnable()
     {
-        Lua.RegisterFunction("ShowForm", this, typeof(MyLuaFunctions).GetMethod("ShowForm"));
+        Lua.RegisterFunction("CanCompleteEndings", this, typeof(MyLuaFunctions).GetMethod("CanCompleteEndings"));
         Lua.RegisterFunction("TurnLightsOff", this, typeof(MyLuaFunctions).GetMethod("TurnLightsOff"));
+        Lua.RegisterFunction("StopBlinking", this, typeof(MyLuaFunctions).GetMethod("StopBlinking"));
     }
     private void OnDisable()
     {
-        Lua.UnregisterFunction("ShowForm");
+        Lua.UnregisterFunction("CanCompleteEndings");
         Lua.UnregisterFunction("TurnLightsOff");
-    }
-    public void ShowForm()
-    {
-        Debug.Log("running lua function showform");
-        nameEntryForm.SetActive(true);
+        Lua.UnregisterFunction("StopBlinking");
     }
     public void TurnLightsOff()
     {
@@ -76,8 +81,37 @@ public class MyLuaFunctions : MonoBehaviour
         Light[] lightList = allLightsParent.GetComponentsInChildren<Light>();
         foreach(Light light in lightList)
         {
-            light.enabled = true;
+            light.enabled = false;
             light.color = lightColor;
         }
+    }
+
+    public void CanCompleteEndings()
+    {
+        PuzzleInteractor.canInteract = true;
+    }
+
+    public void StopBlinking()
+    {
+        BasicConvoStart.isLightBlinking = false;
+        lightAIKAConsole.myLight.enabled = false;
+    }
+
+    public void EndingSequence()
+    {
+        StartCoroutine(Ending());
+        
+    }
+
+    IEnumerator Ending()
+    {
+        PlayerScript.TogglePlayerMovement(false);
+        foreach (RobotAttacker attacker in allRobots.GetComponentsInChildren<RobotAttacker>())
+        {
+            attacker.BecomeHostile();
+        }
+        yield return new WaitForSeconds(2.5f);
+        PlayerLook.SetMouseMover(false);
+        endingCanvas.SetActive(true);
     }
 }

@@ -19,10 +19,8 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
         private AudioClip originalClip = null;
         private bool restoreOriginalClip = false; // Don't restore; could stop next entry's AudioWait that runs same frame.
 
-        void OnConversationStart(Subtitle subtitle)
-        {
-            Debug.Log(subtitle.dialogueEntry.currentDialogueText);
-        }
+        private string playerName;
+        private string ipaName;
 
         public IEnumerator Start()
         {
@@ -33,13 +31,25 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             speechConfig.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw24Khz16BitMonoPcm);
             //speechConfig.SpeechSynthesisVoiceName = "en-US-AriaNeural";
             synthesizer = new SpeechSynthesizer(speechConfig, null);
-            string playerName = DialogueLua.GetVariable("playerName").asString;
+            playerName = DialogueLua.GetVariable("playerName").asString;
             string fakeName = DialogueLua.GetVariable("fakeName").asString;
+            ipaName = PlayerPrefs.GetString("playerIPA");
+            string dialogueString;
 
-            string dialogueString = GetParameter(0);
-            Debug.Log("dialogue string: "+dialogueString);
-            dialogueString = dialogueString.Replace("[playerName]", playerName);
-            dialogueString = dialogueString.Replace("[fakeName]", fakeName);
+            if (DialogueManager.currentConversationState != null)
+            {
+                dialogueString = DialogueManager.currentConversationState.subtitle.formattedText.text;
+            }
+            else
+            {
+                dialogueString = "invalid string";
+                Debug.LogError("convo is not active");
+            }
+            
+            //string dialogueString = GetParameter(0);
+            //Debug.Log("dialogue string: "+dialogueString);
+            //dialogueString = dialogueString.Replace("[playerName]", playerName);
+            //dialogueString = dialogueString.Replace("[fakeName]", fakeName);
             Transform subject = GetSubject(1);
             nextClipIndex = 2;
             if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Sequencer: AudioWait({1})", new System.Object[] { DialogueDebug.Prefix, GetParameters() }));
@@ -59,13 +69,15 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             }
         }
 
-        string ssmlGenerator(string text)
+        string ssmlGenerator(string text, string playerName, string ipaName)
         {
+            text = text.Replace(playerName, $"<phoneme alphabet='ipa' ph='{ipaName}'>{playerName}</phoneme>");
             string ssmlMessage = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>" +
                 "<voice name = 'en-US-AriaNeural'>" +
                 text +
                 "</voice>" +
                 "</speak>";
+
             return ssmlMessage;
         }
 
@@ -80,7 +92,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
                 }
                 else
                 {
-                    string ssmlDialogueText = ssmlGenerator(dialogueText);
+                    string ssmlDialogueText = ssmlGenerator(dialogueText, playerName, ipaName);
                     var result = synthesizer.SpeakSsmlAsync(ssmlDialogueText).Result;
 
                     if (result.Reason == ResultReason.SynthesizingAudioCompleted)

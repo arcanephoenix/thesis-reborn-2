@@ -18,6 +18,8 @@ public class PlayerScript : MonoBehaviour
     Vector3 gravity;
     CharacterController controller;
 
+    public static AudioSource playerAudioSource;
+
     //public Image fader;  
 
 
@@ -25,10 +27,12 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+        playerAudioSource = GetComponent<AudioSource>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         controller = GetComponent<CharacterController>();
-        fader.CrossFadeAlpha(0, 2, false);
+        fader.enabled = true;
+        //fader.CrossFadeAlpha(0, 2, false);
         StartCoroutine(MovementPause());
     }
     /*
@@ -37,7 +41,7 @@ public class PlayerScript : MonoBehaviour
     IEnumerator MovementPause()
     {
         canPlayerMove = false;
-        fader.CrossFadeAlpha(0, 1, false);
+        fader.CrossFadeAlpha(0, 2, false);
         yield return new WaitForSeconds(1);
         canPlayerMove = true;
     }
