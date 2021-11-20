@@ -48,10 +48,21 @@ public class PuzzlePiece : MonoBehaviour
         imgBG.color = new Color(0, 0, 0, 0);
         number.color = Color.green;
         isLockedIn = true;
-        Destroy(transform.GetChild(1).gameObject);
-        Destroy(transform.GetChild(2).gameObject);
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(false);
     }
-
+    
+    public void ResetPiece()
+    {
+        imgBG.color = Color.white;
+        isLockedIn = false;
+        transform.GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(true);
+        number.text = 0.ToString();
+        number.color = Color.black;
+        
+    }
+    
     public int GetDigit()
     {
         return int.Parse(number.text);

@@ -102,8 +102,8 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
                 }
                 else
                 {
-                    string ssmlDialogueText = ssmlGenerator(dialogueText, playerName, ipaName);
-                    //string ssmlDialogueText = ssmlGenerator(dialogueText, playerName);
+                    string ssmlDialogueText = ssmlGenerator(dialogueText, playerName, ipaName); //for tts version
+                    //string ssmlDialogueText = ssmlGenerator(dialogueText, playerName); //for control version
                     var result = synthesizer.SpeakSsmlAsync(ssmlDialogueText).Result;
 
                     if (result.Reason == ResultReason.SynthesizingAudioCompleted)

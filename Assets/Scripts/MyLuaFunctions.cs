@@ -23,9 +23,12 @@ public class MyLuaFunctions : MonoBehaviour
 
     private void Start()
     {
+        //for control, next 3 lines
         //PlayerPrefs.DeleteKey("playerName");
         //PlayerPrefs.DeleteKey("playerIPA");
         //playerString = "Alex";
+
+        //for standard, next 2 lines
         playerString = PlayerPrefs.GetString("playerName");
         playerIPAString = PlayerPrefs.GetString("playerIPA");
         string fakeName = DialogueLua.GetVariable("fakeName").asString;
@@ -93,5 +96,10 @@ public class MyLuaFunctions : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         PlayerLook.SetMouseMover(false);
         endingCanvas.SetActive(true);
+    }
+
+    public void GameExit()
+    {
+        Application.Quit();
     }
 }

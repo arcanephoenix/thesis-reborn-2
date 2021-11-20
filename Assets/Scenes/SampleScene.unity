@@ -1159,8 +1159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 85.55
-  m_MinHeight: 26.5
+  m_MinWidth: 139.96
+  m_MinHeight: 43.1
   m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
@@ -2289,7 +2289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 658533855}
-  flashlightLife: 20
+  flashlightLife: 50
   flashlightKey: 113
 --- !u!1 &688920391
 GameObject:
@@ -3744,7 +3744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4759721911903040, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.1
+      value: -7.33
       objectReference: {fileID: 0}
     - target: {fileID: 4759721911903040, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3752,7 +3752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4759721911903040, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.74
+      value: -13.18
       objectReference: {fileID: 0}
     - target: {fileID: 4759721911903040, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8403,7 +8403,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 56894a729bbba84408f962fb2fc5ed19, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1143460240614066110, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d6d06c887a1aae94f8c6e8cc2c0c557b, type: 3}
 --- !u!95 &1469251348 stripped
 Animator:
@@ -8660,18 +8661,18 @@ PrefabInstance:
     - target: {fileID: 7684905679957245508, guid: 39a9039e57fc87f45a5079f4dff8a716, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1517194449}
     - target: {fileID: 7684905679957245508, guid: 39a9039e57fc87f45a5079f4dff8a716, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7684905679957245508, guid: 39a9039e57fc87f45a5079f4dff8a716, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnExit
+      value: GameExit
       objectReference: {fileID: 0}
     - target: {fileID: 7684905679957245508, guid: 39a9039e57fc87f45a5079f4dff8a716, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: EndingSetter, Assembly-CSharp
+      value: MyLuaFunctions, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7684905679957245508, guid: 39a9039e57fc87f45a5079f4dff8a716, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

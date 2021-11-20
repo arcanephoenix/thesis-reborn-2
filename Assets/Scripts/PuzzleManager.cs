@@ -66,6 +66,7 @@ public class PuzzleManager : MonoBehaviour
             }
             keyCode.Add(genDigit);
         }
+        
     }
 
     public void StartPuzzle()
@@ -75,6 +76,12 @@ public class PuzzleManager : MonoBehaviour
         if(!isSolved)
         {
             puzzleCanvas.SetActive(true);
+            charPopup.enabled = false;
+            foreach(GameObject piece in puzzlePieces)
+            {
+                piece.GetComponent<PuzzlePiece>().ResetPiece();
+            }
+            attemptsMade = 0;
             Cursor.lockState = CursorLockMode.Confined;
             NewPuzzleSolution();
         }

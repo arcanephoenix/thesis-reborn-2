@@ -29,12 +29,13 @@ public class RobotAttacker : MonoBehaviour
         if(isHostile)
         {
             float turnAngle = Vector3.SignedAngle(transform.forward, player.transform.position - transform.position, transform.up);
+
             //transform.Rotate(transform.up, turnAngle);
             if (Mathf.Abs(turnAngle) > 0.5f)
             {
                 transform.Rotate(transform.up, turnAngle);
             }
-            character.Move(transform.forward);
+            character.Move(transform.forward * 0.01f);
         }
     }
 }
